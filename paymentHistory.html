@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>ប្រវត្តិបង់ប្រាក់-X-Flow Elearning</title>
+      <link rel="icon" type="image/png" href="assets/images/payment.png"  >
+
+  <link rel="stylesheet" href="assets/styles.css"> <!-- ប្រើ CSS ដូច dashboard -->
+  <style>
+    body { 
+      font-family: "Noto Sans Khmer", sans-serif; 
+      padding: 30px; 
+      background: #f3f6fa;
+      color: #333;
+    }
+    h2 { 
+      margin-bottom: 20px; 
+      font-size: 22px;
+      text-align: center;
+      color: #007bff;
+    }
+
+    /* Modern Card Table */
+    .history-container {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      max-width: 800px;
+      margin: auto;
+    }
+
+    table { 
+      width: 100%; 
+      border-collapse: collapse; 
+    }
+    thead {
+      background: linear-gradient(90deg, #007bff, #00c6ff);
+      color: #fff;
+    }
+    th, td { 
+      padding: 12px 15px; 
+      text-align: center; 
+      font-size: 15px;
+    }
+    tbody tr {
+      background: #fafafa;
+      transition: 0.2s;
+    }
+    tbody tr:nth-child(even) {
+      background: #f1f5f9;
+    }
+    tbody tr:hover {
+      background: #e8f4ff;
+      transform: scale(1.01);
+    }
+
+    .no-data { 
+      color: gray; 
+      text-align: center; 
+      margin-top: 20px; 
+      font-size: 16px;
+    }
+
+    .back-btn { 
+      margin-top: 25px; 
+      display: block; 
+      width: fit-content;
+      padding: 10px 20px; 
+      background: #007bff; 
+      color: #fff; 
+      text-decoration: none; 
+      border-radius: 8px; 
+      font-weight: bold;
+      transition: 0.3s;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .back-btn:hover { 
+      background: #0056b3;
+    }
+    .status {
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 6px;
+  display: inline-block;
+}
+.status.success { background: #d4edda; color: #155724; }   /* ✅ ជោគជ័យ */
+.status.pending { background: #fff3cd; color: #856404; }   /* ⏳ កំពុងរង់ចាំ */
+.status.failed  { background: #f8d7da; color: #721c24; }   /* ❌ បរាជ័យ */
+
+  </style>
+</head>
+<body>
+  <h2>📒 ប្រវត្តិបង់ប្រាក់</h2>
+
+  <div class="history-container">
+  <table id="historyTable">
+    <thead>
+  <tr>
+    <th>វគ្គសិក្សា</th>
+    <th>តម្លៃ</th>
+    <th>កាលបរិច្ឆេទ</th>
+    <th>ស្ថានភាព</th> <!-- ✅ Column ថ្មី -->
+    
+  </tr>
+</thead>
+
+    <tbody id="historyBody"></tbody>
+  </table>
+  <p id="noHistory" class="no-data" style="display:none;">🙅‍♂️ មិនទាន់មានប្រវត្តិបង់ប្រាក់ទេ</p>
+
+  <!-- 🧹 Clear Button -->
+  <button onclick="clearHistory()" style="
+      margin-top:15px;
+      background:#dc3545;
+      color:white;
+      border:none;
+      padding:10px 18px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:bold;">
+    🧹 លុបប្រវត្តិ
+  </button>
+</div>
+
+
+  <a href="dashboard.html" class="back-btn">⬅️ ត្រឡប់ទៅ Dashboard</a>
+
+  <script src="paymentHistory.js"></script>
+</body>
+</html>

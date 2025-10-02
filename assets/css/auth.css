@@ -1,0 +1,151 @@
+/* General */
+body {
+  margin: 0;
+  font-family: 'Noto Sans Khmer', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(-45deg, #2575fc, #00c48c, #1a1a2e, #6a11cb);
+  background-size: 400% 400%;
+  animation: gradientShift 12s ease infinite;
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%;}
+  50% { background-position: 100% 50%;}
+  100% { background-position: 0% 50%;}
+}
+
+/* Box */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.auth-box {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  padding: 40px 35px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  animation: fadeInUp 1s ease;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(50px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+.auth-box h2 {
+  margin-bottom: 25px;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+/* Input Group */
+.input-group {
+  position: relative;
+  margin-bottom: 25px;
+}
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  outline: none;
+  background: rgba(255,255,255,0.15);
+  border-radius: 8px;
+  font-size: 16px;
+  color: #fff;
+}
+.input-group input:focus {
+  box-shadow: 0 0 10px rgba(0,196,140,0.6);
+}
+.input-group label {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: #ddd;
+  font-size: 14px;
+  transition: 0.3s;
+  pointer-events: none;
+}
+.input-group input:focus + label,
+.input-group input:valid + label {
+  top: -8px;
+  font-size: 12px;
+  color: #00c48c;
+}
+
+/* Button */
+.btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(90deg, #2575fc, #00c48c);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+}
+
+/* Switch text */
+.switch-text {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #efefef;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+.switch-text a {
+  color: #20ff0c;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0cap;
+}
+.switch-text a:hover {
+  text-decoration: underline;
+}
+/* Popup Modal */
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+  background: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  width: 320px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.close {
+  float: right;
+  font-size: 22px;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+  .content {
+    width: 100%;
+  }
+}

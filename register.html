@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ចុះឈ្មោះ - X-Flow Elearning</title>
+  <link rel="icon" type="image/png" href="assets/images/avatar.png">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/auth.css">
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-box">
+      <h2>📝 ចុះឈ្មោះ</h2>
+      <form id="registerForm">
+        <input type="text" id="username" placeholder="ឈ្មោះអ្នកប្រើ" required>
+        <input type="email" id="email" placeholder="អ៊ីមែល" required>
+        <input type="password" id="password" placeholder="ពាក្យសម្ងាត់" required>
+        <button type="submit" class="btn">ចុះឈ្មោះ</button>
+      </form>
+      <p>មានគណនីរួចហើយ? <a href="login.html">ចូល</a></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("registerForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const username = document.getElementById("username").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      // រក្សាទុកក្នុង localStorage
+      const user = { username, email, password };
+      localStorage.setItem("user", JSON.stringify(user));
+
+      alert("✅ ចុះឈ្មោះជោគជ័យ!");
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>

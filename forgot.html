@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ភ្លេចពាក្យសម្ងាត់ -X-Flow Elearning</title>
+  <link rel="icon" type="image/png" href="assets/images/dashboard-bg-darkmode.avif"  >
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/auth.css">
+</head>
+
+
+<body>
+  <div class="auth-container">
+    <div class="auth-box">
+      <h2>🔑សុំបញ្ចូលព័ត៌មានខាងក្រោមនេះដើម្បីប្ដូរពាក្យសង្ងាត់ថ្មី</h2>
+      <form id="forgotForm">
+        <input type="text" id="username" placeholder="ឈ្មោះអ្នកប្រើ" required>
+        <input type="email" id="email" placeholder="អ៊ីមែល" required>
+        <button type="submit" class="btn">បន្ត</button>
+      </form>
+      <p><a href="login.html">⬅ ត្រឡប់ទៅកន្លែងចូលប្រើប្រាស់វិញ</a></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("forgotForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const username = document.getElementById("username").value;
+      const email = document.getElementById("email").value;
+
+      const user = JSON.parse(localStorage.getItem("user"));
+
+      if (user && user.username === username && user.email === email) {
+        // save user temporarily
+        localStorage.setItem("resetUser", username);
+        alert("✅ ព័ត៌មានត្រឹមត្រូវហើយ, សូមកំណត់ពាក្យសម្ងាត់ថ្មី។");
+        window.location.href = "reset.html";
+      } else {
+        alert("⚠️ ឈ្មោះអ្នកប្រើ ឬ អ៊ីមែល មិនត្រឹមត្រូវ!");
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,308 @@
+/* ========== Global Reset ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Khmer OS Battambang", Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: #fff;
+}
+
+/* ========== Auth Box (Login/Register) ========== */
+.auth-box {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 30px 40px;
+  border-radius: 12px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
+}
+
+.auth-box h2 {
+  margin-bottom: 20px;
+  font-size: 26px;
+  color: #fff;
+}
+
+.auth-box input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 16px;
+}
+
+.auth-box input::placeholder {
+  color: #ddd;
+}
+
+.auth-box .btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background: #2575fc;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.auth-box .btn:hover {
+  background: #1b5edb;
+}
+
+.auth-box p {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.auth-box a {
+  color: #ffdf5d;
+  text-decoration: none;
+}
+
+.auth-box a:hover {
+  text-decoration: underline;
+}
+
+/* ========== Welcome Page ========== */
+.welcome-box {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px 40px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
+  text-align: center;
+  width: 400px;
+}
+
+.welcome-box h2 {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+.user-info {
+  margin: 20px 0;
+}
+
+.user-info img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid #4a90e2;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.user-info h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+/* Buttons group */
+.btn-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #2575fc;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #1b5edb;
+}
+
+.btn.danger {
+  background: #dc3545;
+}
+
+.btn.danger:hover {
+  background: #b52b3a;
+}
+
+/* ========== Profile Setting ========== */
+.profile-settings {
+  max-width: 600px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  color: #fff;
+}
+
+.profile-settings label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.profile-settings input,
+.profile-settings textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: none;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+}
+
+.profile-settings textarea {
+  resize: none;
+  min-height: 80px;
+}
+
+.profile-settings .save-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #2575fc;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.profile-settings .save-btn:hover {
+  background: #1b5edb;
+}
+
+/* Avatar upload preview */
+.profile-avatar {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.profile-avatar img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+}
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+  .content {
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .auth-box {
+    width: 90%; /* Fill screen width */
+    padding: 20px;
+  }
+
+  .welcome-box {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .profile-settings {
+    padding: 15px;
+    width: 95%;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .user-info img,
+  .profile-avatar img {
+    width: 90px;
+    height: 90px;
+  }
+}
+/* ✅ Fix Mobile Responsive */
+@media (max-width: 768px) {
+  /* Auth Box */
+  .auth-box {
+    width: 90%;
+    max-width: 350px;
+    padding: 20px;
+  }
+
+  /* Welcome box */
+  .welcome-box {
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+  }
+
+  /* Profile settings */
+  .profile-settings {
+    width: 95%;
+    padding: 15px;
+  }
+
+  /* Buttons */
+  .btn-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Avatar images */
+  .user-info img,
+  .profile-avatar img {
+    width: 90px;
+    height: 90px;
+  }
+}
+/* Tablet Responsive */
+@media (max-width: 768px) {
+  .auth-box, .welcome-box { width: 90%; max-width: 350px; padding: 20px; }
+  .profile-settings { width: 95%; padding: 15px; }
+  .btn-group { flex-direction: column; gap: 10px; }
+  .btn { width: 100%; }
+  .user-info img, .profile-avatar img { width: 90px; height: 90px; }
+}
+
+/* Small Mobile (≤ 425px) */
+@media (max-width: 425px) {
+  .auth-box, .welcome-box { width: 95%; padding: 15px; }
+  .auth-box h2, .welcome-box h2 { font-size: 20px; }
+  .auth-box input { padding: 10px; font-size: 14px; }
+  .btn { padding: 10px; font-size: 14px; }
+  .profile-settings { padding: 10px; }
+}
+/* 🔧 Prevent side overflow */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .auth-box, .welcome-box, .profile-settings {
+    margin: 0 auto;   /* Center */
+    max-width: 100%;  /* Prevent overflow */
+  }
+}

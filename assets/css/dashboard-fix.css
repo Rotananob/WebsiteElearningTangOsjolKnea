@@ -1,0 +1,47 @@
+/* Default sidebar fix for all devices */
+.sidebar {
+  background: #ffffff; /* បងអាចប្ដូរពណ៌បាន */
+  height: 100vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* --- Mobile Responsive --- */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 240px;
+    height: 100vh;
+    background: #ffffff;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+  }
+
+  /* when active = show sidebar */
+  .sidebar.active {
+    transform: translateX(0);
+  }
+
+  /* overlay background */
+  .overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+  }
+
+  .overlay.show {
+    display: block;
+  }
+
+  /* main content full width */
+  .main {
+    margin-left: 0 !important;
+    width: 100%;
+  }
+}

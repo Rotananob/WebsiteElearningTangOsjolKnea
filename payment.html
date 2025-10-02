@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>💳បង់ប្រាក់-X-Flow Elearning</title>
+        <link rel="icon" type="image/png" href="assets/images/payment.png"  >
+
+  <style>
+    body {
+      font-family: "Noto Sans Khmer", sans-serif;
+      background: #f5f6fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .payment-container {
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 380px;
+    }
+    .payment-container h2 {
+      margin-bottom: 15px;
+      color: #333;
+    }
+    .form-step {
+      display: none;
+      text-align: left;
+    }
+    .form-step.active {
+      display: block;
+    }
+    .form-group {
+      margin-bottom: 12px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 5px;
+      color: #444;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    #payBtn {
+      background: #27ae60;
+      color: white;
+      width: 100%;
+    }
+    #payBtn:hover {
+      background: #219150;
+    }
+    .backBtn {
+      background: #bdc3c7;
+      width: 100%;
+      margin-top: 8px;
+    }
+    .backBtn:hover {
+      background: #95a5a6;
+    }
+  </style>
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<body>
+  <div class="payment-container">
+    <h2>💳 ការបង់ប្រាក់</h2>
+
+    <!-- STEP 1: Course Info -->
+    <div id="step1" class="form-step active">
+      <p>វគ្គ៖ <strong id="courseTitle">Loading...</strong></p>
+      <p>តម្លៃ៖ <strong id="coursePrice">Loadin``g...</strong></p>
+      <button id="payBtn">✅ Pay Now</button>
+      <button class="backBtn" onclick="window.location.href='dashboard.html'">⬅️ ត្រឡប់</button>
+    </div>
+
+    <!-- STEP 2: Card Info -->
+    <div id="step2" class="form-step">
+      <form id="paymentForm">
+        <div class="form-group">
+          <label>Card Holder Name</label>
+          <input type="text" id="cardName" placeholder="Ex: XFlow Sharing" required>
+        </div>
+        <div class="form-group">
+          <label>Card Number</label>
+          <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required>
+        </div>
+        <div class="form-group">
+          <label>Expiry Date</label>
+          <input type="month" id="cardExpiry" required>
+        </div>
+        <div class="form-group">
+          <label>CVV</label>
+          <input type="password" id="cardCVV" placeholder="***" maxlength="4" required>
+        </div>
+
+        <button type="submit" id="confirmBtn">💳 Confirm Payment</button>
+        <button type="button" class="backBtn" onclick="goBack()">⬅️ ត្រឡប់</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const course = JSON.parse(localStorage.getItem("selectedCourse")) || {
+        title: "Unknown Course",
+        price: "2.99$/3month"
+      };
+      document.getElementById("courseTitle").textContent = course.title;
+      document.getElementById("coursePrice").textContent = course.price;
+
+      // Go to Step 2 when Pay Now clicked
+      document.getElementById("payBtn").addEventListener("click", () => {
+        document.getElementById("step1").classList.remove("active");
+        document.getElementById("step2").classList.add("active");
+      });
+
+      // Handle Payment Submit
+      document.getElementById("paymentForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const cardName = document.getElementById("cardName").value.trim();
+        const cardNumber = document.getElementById("cardNumber").value.trim();
+        const cardExpiry = document.getElementById("cardExpiry").value;
+        const cardCVV = document.getElementById("cardCVV").value.trim();
+
+        if (cardName.length < 3 || cardNumber.length < 16 || cardCVV.length < 3) {
+          alert("❌ សូមបំពេញព័ត៌មានកាតឲ្យបានត្រឹមត្រូវ!");
+          return;
+        }
+
+        // Save Purchased Course
+        let purchasedCourses = JSON.parse(localStorage.getItem("purchasedCourses")) || [];
+        if (!purchasedCourses.includes(course.title)) {
+          purchasedCourses.push(course.title);
+          localStorage.setItem("purchasedCourses", JSON.stringify(purchasedCourses));
+        }
+
+        // Save Payment History
+        const history = JSON.parse(localStorage.getItem("paymentHistory")) || [];
+        history.push({
+          title: course.title,
+          price: course.price,
+          cardName,
+          cardNumber: "**** **** **** " + cardNumber.slice(-4),
+          date: new Date().toLocaleString("km-KH"),
+          status: "Paid"
+        });
+        localStorage.setItem("paymentHistory", JSON.stringify(history));
+
+        alert("❌នេះជា website frontEnd SPA ដូច្នេះមិនទាន់មាន database ពិតប្រាកដភ្ជាប់ទៅកាន់ Bank នោះទេ​Paymentនេះគ្រាន់តែជាការដាក់តំណាងប៉ុណ្ណោះ វាមិនកាត់លុយពិតៗនោះទេទោះបំពេញត្រូវក៏ដោយ យើងនឹងមានមុខងារ​​ Payment ពិតៗនៅពេលក្រោយ  🙏" );
+        window.location.href = "dashboard.html";
+      });
+    });
+
+    // Back from Step 2 to Step 1
+    function goBack() {
+      document.getElementById("step2").classList.remove("active");
+      document.getElementById("step1").classList.add("active");
+    }
+  </script>
+</body>
+</html>

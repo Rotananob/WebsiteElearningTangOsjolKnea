@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>កំណត់ពាក្យសម្ងាត់ថ្មី -X-Flow Elearning</title>
+    <link rel="icon" type="image/png" href="assets/images/dashboard-bg-darkmode.avif"  >
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/auth.css">
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-box">
+      <h2>🔒 កំណត់ពាក្យសម្ងាត់ថ្មី</h2>
+      <form id="resetForm">
+        <input type="password" id="newPassword" placeholder="ពាក្យសម្ងាត់ថ្មី" required>
+        <input type="password" id="confirmPassword" placeholder="បញ្ចាក់ពាក្យសម្ងាត់" required>
+        <button type="submit" class="btn">រក្សាទុក</button>
+      </form>
+      <p><a href="login.html">⬅ ត្រឡប់ទៅកន្លែងចូលប្រើប្រាស់វិញ</a></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("resetForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const newPass = document.getElementById("newPassword").value;
+      const confirmPass = document.getElementById("confirmPassword").value;
+      const username = localStorage.getItem("resetUser");
+
+      if (newPass !== confirmPass) {
+        alert("⚠️ ពាក្យសម្ងាត់មិនត្រូវគ្នាទេ!");
+        return;
+      }
+
+      let user = JSON.parse(localStorage.getItem("user"));
+      if (user && user.username === username) {
+        user.password = newPass; // update pw
+        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.removeItem("resetUser");
+        alert("✅ ពាក្យសម្ងាត់ថ្មីត្រូវបានកំណត់ជោគជ័យ!");
+        window.location.href = "login.html";
+      } else {
+        alert("⚠️ មានបញ្ហា, សូមព្យាយាមម្តងទៀត!");
+      }
+    });
+  </script>
+</body>
+</html>

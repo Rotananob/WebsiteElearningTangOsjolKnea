@@ -1,0 +1,101 @@
+body {
+  font-family: 'Noto Sans Khmer', sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg, #2575fc, #00c48c);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #333;
+}
+
+.profile-settings {
+  background: #fff;
+  padding: 30px 25px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 450px;
+  animation: fadeIn 1s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.profile-settings h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2575fc;
+}
+
+.profile-settings h3 {
+  margin: 20px 0 10px;
+  color: #00c48c;
+}
+
+.profile-avatar {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.profile-avatar img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #2575fc;
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+.profile-avatar img:hover {
+  transform: scale(1.05);
+}
+.upload-btn {
+  display: inline-block;
+  background: #2575fc;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.upload-btn:hover {
+  background: #1a5ad7;
+}
+
+label {
+  font-weight: 600;
+  margin-top: 10px;
+  display: block;
+}
+input, textarea, select {
+  width: 100%;
+  padding: 10px;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 15px;
+  transition: 0.3s;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: #00c48c;
+  outline: none;
+  box-shadow: 0 0 8px rgba(0,196,140,0.4);
+}
+
+.save-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(90deg, #2575fc, #00c48c);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.save-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+}

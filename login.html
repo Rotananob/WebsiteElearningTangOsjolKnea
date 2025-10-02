@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ចូល - X-Flow Elearning</title>
+  <link rel="icon" type="image/png" href="assets/images/3013.webp">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/auth.css">
+    <link rel="stylesheet" href="welcome.html">
+
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<body>
+  <div class="auth-container">
+    <div class="auth-box">
+      <h2>🔑 ចូលគណនី</h2>
+      <form id="loginForm">
+        <input type="text" id="username" placeholder="ឈ្មោះអ្នកប្រើ" required>
+        <input type="password" id="password" placeholder="ពាក្យសម្ងាត់" required>
+        <button type="submit" class="btn">ចូល</button>
+      </form>
+
+      <p><a href="forgot.html">ភ្លេចពាក្យសម្ងាត់?</a></p>
+      <p>មិនទាន់មានគណនី? <a href="register.html">ចុះឈ្មោះ</a></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      const user = JSON.parse(localStorage.getItem("user"));
+      if (user && user.username === username && user.password === password) {
+        alert("✅ ចូលបានជោគជ័យ!");
+     window.location.href = "welcome.html";
+
+      } else {
+        alert("⚠️ ឈ្មោះអ្នកប្រើ ឬ ពាក្យសម្ងាត់ មិនត្រឹមត្រូវ!");
+      }
+    });
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="km">
+<head>
+
+  <title>សាលារៀន​ X-Flow Sharing</title>
+      <link rel="icon" type="image/png" href="assets/images/learning.jpg"  >
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/dashboard.css" />
+<link rel="stylesheet" href="assets/css/dashboard-fix.css" />
+<style>
+  h2{
+    font-family: fantasy;
+  }
+</style>
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<body>
+  
+  <!-- Sidebar -->
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar__brand">
+      <img src="assets/images/logo.jpg" alt="X-flow sharing Logo" />
+      <h2><b>កុំភ្លេចlike & Follow Page :</b><br>​ <b>X-Flow Sharing</b></h2>
+    </div>
+
+    <!-- Sidebar -->
+    <nav class="sidebar__nav">
+      
+      <button class="nav-item active" data-category="all">🏠 <span>ទាំងអស់</span></button>
+            <button class="nav-item" data-category="Other"> <span><b>👨‍🎓Other Major ------->></b></span></button>
+            
+      <button class="nav-item" id="showFavorites">⭐ <span>មេរៀនដែលរក្សាទុក</span></button>
+      <button id="viewHistoryBtn" class="btn">💳 View Payment History</button>
+
+      <a href="profile-sitting-dashboard.html" class="nav-item">👤 <span>កែប្រវត្តិ</span></a>
+
+      <div class="join-us">
+  <h1>📢 Join Us:</h1>
+  <ul>
+    <li><a href="https://t.me/xflowsharing" target="_blank">📲 Telegram</a></li>
+    <li><a href="https://www.youtube.com/@X-FlowSharing" target="_blank">▶️ YouTube</a></li>
+    <li><a href="https://web.facebook.com/profile.php?id=61572457263826" target="_blank">📘 Facebook Page</a></li>
+    <li><a href="https://www.tiktok.com/@xflow.sharing?is_from_webapp=1&sender_device=pc" target="_blank">🎵 TikTok</a></li>
+  </ul>
+</div>
+
+
+    
+      <button id="logoutBtn" class="nav-item danger">🚪 <span>ចាកចេញ</span></button>
+    </nav>
+
+    <div class="sidebar__footer">
+      <button id="darkModeBtn" class="btn-ghost">🌙 Dark Mode</button>
+      
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <!-- Header -->
+    <header class="header">
+      <button id="toggleSidebar" class="icon-btn">☰ របារម៉ឺនុយ
+</button>
+
+      <div class="header-right">
+        
+        <!-- Notification -->
+        <div class="notif">
+          
+          <button id="notifBtn" class="icon-btn">🔔</button>
+          
+          <span id="notifCount" class="badge">0</span>
+
+          <div id="notifDropdown" class="dropdown">
+            <div class="dropdown__header">
+              <h4>📢 ការជូនដំណឹង</h4>
+              <button id="clearNotif" class="link">សម្អាត</button>
+            </div>
+            <ul id="notifList" class="dropdown__list"></ul>
+          </div>
+        </div>
+
+        <!-- User -->
+        <a href="profile-sitting-dashboard.html" class="user">
+          <img id="headerAvatar" src="assets/images/default-avatar.png" alt="Avatar" />
+          <span id="headerName">អ្នកប្រើប្រាស់</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <section class="content">
+
+      <h2>📚 ជ្រើសជំនាញឬមេរៀនសិក្សារបស់អ្នក</h2>
+
+      <!-- Search bar -->
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="🔍ឧ: មូលដ្ធានគ្រឹះច្បាប់....">
+      </div>
+
+      <!-- Chips filter -->
+      <div class="chips">
+        
+        <button class="chip active" data-category="all">ទាំងអស់</button>
+        <button class="chip" data-category="IT">IT👨‍💻 </button>
+        <button class="chip" data-category="Engineering">🏗️ វិស្វកម្ម</button>
+        <button class="chip" data-category="Help">​ 🚑 ជំនួយ</button>
+        <button class="chip" data-category="Medical">🧑‍⚕️ពេទ្យ</button>
+        <button class="chip" data-category="Lawyer">🧑‍⚖️Lawyer</button>
+        <button class="chip" data-category="Accounting">🧾Accounting</button>
+        <button class="chip" data-category="Pharmacy">🔬Pharmacy</button>
+        <button class="chip" data-category="PublicRelations">📢 PR</button>
+        <button class="chip" data-category="Language">📖ភាសា</button>
+
+                <button class="chip" data-category="Design">👷‍♀️🏢Interior design</button>
+
+            <button class="chip" data-category="Business">🧑‍💼Business</button>
+
+
+               
+
+
+
+      </div>
+
+      <!-- Courses -->
+      <div id="courseList" class="grid"></div>
+      
+
+      <!-- Video Modal -->
+      <div id="videoModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="modal__dialog" role="document">
+          <button class="modal__close" id="modalClose" aria-label="Close">✖</button>
+          <h3 id="modalTitle" class="modal__title"></h3>
+          <div class="video-box modal__video">
+            <div id="modalPlayerHolder" class="player-holder"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© 2025 រចនាដោយ​ <b>Rotana Nob</b></p>
+    </footer>
+  </main>
+
+  <!-- JS -->
+   <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBc3WwfA4PUacLeCFBVVWI7vgalq3S6b_I",
+    authDomain: "x-flow-e-learning.firebaseapp.com",
+    projectId: "x-flow-e-learning",
+    storageBucket: "x-flow-e-learning.firebasestorage.app",
+    messagingSenderId: "418507783391",
+    appId: "1:418507783391:web:c089b67d209cb65bf27d6a",
+    measurementId: "G-HWQJ01TBF3"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+  <script src="assets/js/dashboard.js"></script>
+    
+
+</body>
+</html>

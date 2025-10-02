@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ស្វាគមន៍ - X-Flow E-Learning</title>
+    <link rel="icon" type="image/png" href="assets/images/3013.webp"  >
+
+  <style>
+    body {
+      font-family: "Noto Sans Khmer", "Poppins", sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      display: flex; justify-content: center; align-items: center;
+      min-height: 100vh; margin: 0; color: #fff;
+      overflow: hidden;
+    }
+
+    /* Floating background orbs */
+    body::before, body::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.6;
+      animation: float 10s infinite alternate ease-in-out;
+    }
+    body::before {
+      width: 400px; height: 400px;
+      top: -100px; left: -100px;
+      background: #6a11cb;
+    }
+    body::after {
+      width: 350px; height: 350px;
+      bottom: -120px; right: -100px;
+      background: #2575fc;
+    }
+
+    .welcome-box {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 35px 30px; border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+      text-align: center; backdrop-filter: blur(16px);
+      width: 370px; animation: fadeIn 1s ease;
+      border: 1px solid rgba(255,255,255,0.15);
+      position: relative; overflow: hidden;
+    }
+    .welcome-box::before {
+      content: "";
+      position: absolute; top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: conic-gradient(from 180deg, #ff00cc, #3333ff, #00ffcc, #ffcc00, #ff00cc);
+      animation: rotate 10s linear infinite;
+      z-index: -1;
+    }
+    .welcome-box::after {
+      content: "";
+      position: absolute; inset: 2px;
+      background: rgba(20,20,30,0.9);
+      border-radius: 18px;
+      z-index: -1;
+    }
+
+    .welcome-box h2 {
+      font-size: 2rem; margin-bottom: 15px;
+      animation: bounce 1.5s infinite alternate;
+      background: linear-gradient(90deg, #ff8a00, #e52e71, #6a11cb, #2575fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .avatar-preview {
+      width: 95px; height: 95px;
+      border-radius: 50%; border: 3px solid #fff;
+      margin-bottom: 12px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    }
+
+    .btn-group { display: flex; flex-direction: column; gap: 14px; margin-top: 22px; }
+    .btn {
+      background: linear-gradient(135deg, #ffffff, #e0e0e0);
+      color: #2575fc;
+      padding: 13px; border-radius: 12px;
+      text-decoration: none; font-weight: 600;
+      transition: all 0.35s ease; text-align: center;
+      letter-spacing: 0.5px; position: relative; overflow: hidden;
+    }
+    .btn:hover {
+      background: #2575fc; color: #fff;
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+    .btn::after {
+      content: ""; position: absolute; top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: rgba(255,255,255,0.3);
+      transform: skewX(-20deg);
+      transition: left 0.5s ease;
+    }
+    .btn:hover::after { left: 200%; }
+
+    .btn.danger {
+      background: linear-gradient(135deg, #ff4e50, #ff6a00);
+      color: #fff;
+    }
+    .btn.danger:hover {
+      background: #d72638;
+      box-shadow: 0 8px 20px rgba(255,0,0,0.3);
+    }
+
+    /* Loading Overlay */
+    #loadingOverlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.95);
+      display: flex; justify-content: center; align-items: center; flex-direction: column;
+      z-index: 9999; color: #fff; font-size: 1.8rem; display: none;
+    }
+    #loadingOverlay h1 {
+      font-size: 2rem; font-weight: 700;
+      background: linear-gradient(90deg, #ff8a00, #e52e71, #6a11cb, #2575fc);
+      background-size: 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientMove 3s linear infinite;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .progress-bar {
+      margin-top: 20px; width: 230px; height: 12px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 20px; overflow: hidden; position: relative;
+    }
+    .progress {
+      width: 0%; height: 100%;
+      background: linear-gradient(90deg, #ff0000, #ff6a00, #ffcc00);
+      position: relative;
+    }
+    .progress::after {
+      content: ""; position: absolute; top: 0; left: -40px; width: 40px; height: 100%;
+      background: rgba(255,255,255,0.6); transform: skewX(-20deg);
+      animation: shine 1s linear infinite;
+    }
+    #percentText { margin-top: 12px; font-size: 1.2rem; font-weight: bold; color: #ffcc70; }
+
+    /* Success Splash */
+    #successSplash {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.95);
+      display: none; justify-content: center; align-items: center; flex-direction: column;
+      z-index: 10000; color: #fff;
+    }
+    #successSplash h2 {
+      font-size: 2.3rem;
+      animation: popIn 0.8s ease forwards;
+      background: linear-gradient(90deg, #ff8a00, #e52e71, #6a11cb, #2575fc);
+      background-size: 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .confetti {
+      position: absolute; width: 10px; height: 10px;
+      top: -10px; animation: fall 3s linear forwards;
+    }
+
+    /* Animations */
+    @keyframes shine { from{left:-40px;} to{left:230px;} }
+    @keyframes gradientMove { from{background-position:0% 50%;} to{background-position:100% 50%;} }
+    @keyframes fadeIn { from{opacity:0; transform:scale(0.95);} to{opacity:1; transform:scale(1);} }
+    @keyframes bounce { from{transform:translateY(0);} to{transform:translateY(-8px);} }
+    @keyframes popIn { 0%{transform:scale(0.5);opacity:0;} 100%{transform:scale(1.1);opacity:1;} }
+    @keyframes fall { to { transform: translateY(100vh) rotate(360deg); opacity: 0; } }
+    @keyframes rotate { 100%{ transform: rotate(360deg);} }
+    @keyframes float { 100%{ transform: translateY(-30px) translateX(20px);} }
+  </style>
+</head>
+<body>
+  <div class="welcome-box">
+    <h2>🎉 សូមស្វាគមន៍! </h2>
+    
+    <div class="user-info">
+      <img id="userAvatar" src="assets/images/avatar.png" alt="សុំដាក់រូបរបស់អ្នក" class="avatar-preview">
+      <h3 id="userDisplay">User name</h3>
+    </div>
+
+    <div class="btn-group">
+      <a href="profile-setting.html" class="btn">⚙️ Update​ រូបភាពនិងប្រវត្តិរូប</a>
+      <a href="#" id="dashboardBtn" class="btn">ចុចប៊ូតុង (📊) នេះចូលរៀន</a>
+      <button id="logoutBtn" class="btn danger"> ចាកចេញ🚪 </button>
+    </div>
+  </div>
+
+  <!-- Loading Overlay -->
+  <div id="loadingOverlay">
+    <h1>ដោយសារមេរៀន free🔰 ទាំងអស់ចឹងសុំប្រមូតមួយកុំខឹងណា។ ​<br> 
+      ជួយlikeផេក​: X-Flow Sharing</h1>
+    <div class="progress-bar"><div class="progress" id="progress"></div></div>
+    <div id="percentText">0%</div>
+  </div>
+
+  <!-- Success Splash -->
+  <div id="successSplash">
+    <h2>អរគុណច្រើនដែលរង់ចាំ🙏 <br>ស្អាតហើយចិត្តល្អទៀត :P</h2>
+  </div>
+
+  <!-- 🎵 Success Sound -->
+  <audio id="successSound" src="assets/sound/mixkit-small-crowd-clapping-3035.wav"></audio>
+
+  <script>
+    document.getElementById("dashboardBtn").addEventListener("click", function(e) {
+      e.preventDefault();
+      const overlay = document.getElementById("loadingOverlay");
+      const progress = document.getElementById("progress");
+      const percentText = document.getElementById("percentText");
+      overlay.style.display = "flex";
+
+      let percent = 0;
+      let interval = setInterval(() => {
+        percent++;
+        progress.style.width = percent + "%";
+        percentText.innerText = percent + "%";
+        if (percent >= 100) {
+          clearInterval(interval);
+          overlay.style.display = "none";
+          showSuccess();
+        }
+      }, 80);
+    });
+
+    function showSuccess() {
+      const splash = document.getElementById("successSplash");
+      splash.style.display = "flex";
+      createConfetti();
+      playSound();
+      setTimeout(() => {
+        window.location.href = "dashboard.html";
+      }, 4500);
+    }
+
+    function playSound() {
+      const audio = document.getElementById("successSound");
+      audio.play().catch(e => console.log("Autoplay blocked:", e));
+    }
+
+    function createConfetti() {
+      const splash = document.getElementById("successSplash");
+      for (let i = 0; i < 50; i++) {
+        let conf = document.createElement("div");
+        conf.classList.add("confetti");
+        conf.style.left = Math.random() * window.innerWidth + "px";
+        conf.style.backgroundColor = randomColor();
+        conf.style.animationDuration = (2 + Math.random() * 2) + "s";
+        splash.appendChild(conf);
+        setTimeout(()=>conf.remove(), 4000);
+      }
+    }
+
+    function randomColor() {
+      const colors = ["#ff0", "#0ff", "#f0f", "#0f0", "#f00", "#00f"];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+  </script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

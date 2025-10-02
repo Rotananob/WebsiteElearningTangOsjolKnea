@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>កែប្រវត្តិរូប-X-Flow Elearning</title>
+    <link rel="icon" type="image/png" href="assets/images/profile setting.jpg"  >
+
+  <link rel="stylesheet" href="assets/css/profile.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="profile-settings">
+    <h2>⚙️ កែប្រវត្តិរូប</h2>
+    <form id="profileForm">
+      
+      <!-- Avatar Upload -->
+      <div class="profile-avatar">
+        <img id="avatarPreview" src="assets/images/default-avatar.png" alt="Avatar">
+        <label for="avatarUpload" class="upload-btn">📷 ផ្លាស់ប្តូររូប</label>
+        <input type="file" id="avatarUpload" accept="image/*" hidden>
+      </div>
+
+      <!-- Basic Info -->
+      <label for="profileName">ឈ្មោះ</label>
+      <input type="text" id="profileName" required>
+
+      <label for="profileEmail">អ៊ីម៉ែល</label>
+      <input type="email" id="profileEmail">
+
+      <label for="profileBio">Bio</label>
+      <textarea id="profileBio" rows="4"></textarea>
+
+      <!-- Extra Details -->
+      <h3>📌 ព័ត៌មានបន្ថែម</h3>
+
+      <label for="profileEducation">ការសិក្សា</label>
+      <input type="text" id="profileEducation" placeholder="ឧទាហរណ៍: IT at RUPP">
+
+      <label for="profileHometown">ទីកន្លែងកំណើត</label>
+      <input type="text" id="profileHometown" placeholder="ឧទាហរណ៍: Battambang">
+
+      <label for="profileCurrentCity">ទីកន្លែងបច្ចុប្បន្ន</label>
+      <input type="text" id="profileCurrentCity" placeholder="ឧទាហរណ៍: Phnom Penh">
+
+      <label for="profileRelationship">ស្ថានភាពទំនាក់ទំនង</label>
+      <select id="profileRelationship">
+        <option value="">ជ្រើសរើស...</option>
+        <option value="single">នៅលីវ</option>
+        <option value="in-relationship">កំពុងមានទំនាក់ទំនង</option>
+        <option value="married">រៀបការ</option>
+        <option value="complicated">ស្មុគស្មាញ</option>
+      </select>
+
+      <!-- Save -->
+      <button type="submit" class="save-btn">💾 រក្សាទុក</button>
+    </form>
+  </div>
+
+  <script src="assets/js/dashboard.js"></script>
+  
+</body>
+</html>

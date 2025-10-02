@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>X-Flow E-learning - Homepage</title>
+  <link rel="icon" type="image/png" href="assets/images/learning.jpg">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="landing-header">
+    <div class="logo">
+      <img src="assets/images/learning.jpg" alt="Logo">
+            <img src="assets/images/3013.webp" alt="Logo">
+
+      <h1>X-Flow<br> ELearning</h1>
+    </div>
+    <nav>
+      <a href="login.html" class="btn">ចូល</a>
+      <a href="register.html" class="btn-outline">Rigister</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>🚀 រៀនអនឡាញបានគ្រប់ទីកន្លែង</h2>
+      <p>ជម្រើសវគ្គសិក្សា IT, វិស្វកម្ម, ពេទ្យ និងជំនាញជាច្រើនទៀតដោយឥតគិតថ្លៃ</p>
+      <div class="btn-group">
+        <a href="register.html" class="btn">ចាប់ផ្តើមឥឡូវនេះ</a>
+        <a href="login.html" class="btn-outline">ចូល</a>
+        
+      </div>
+      <br>
+            <br>
+      <br>
+
+    </div>
+     <footer class="footer">
+    <p><b>©  X-Flow <br>E-Learning</b> <br>|<br> <b>Last update:</b> <b>01/09/2025</b> <br>|<br> រចនាដោយ : <b>Rotana NOB</b></p>
+  </footer>
+  </section>
+
+
+
+  <!-- Features -->
+  <section class="features">
+    <h2>✨ អ្វីដែលអ្នកទទួលបាន</h2>
+    <div class="grid">
+      <div class="card">📚 មេរៀនប្រកបដោយគុណភាព</div>
+      <div class="card">👨‍🏫 គ្រូបង្រៀនមានបទពិសោធន៍</div>
+      <div class="card">🌎 អាចចូលប្រើបានគ្រប់ទីកន្លែង</div>
+      <div class="card">💯 ឥតគិតថ្លៃ និងងាយស្រួលប្រើ</div>
+      <div class="card">🎥 ប្រមូលផ្ដុំមេរៀនរាប់ពាន់ពី YouTube ជា Playlist</div>
+      <div class="card">👩‍💻 មានជំនាញជាច្រើនសម្រាប់រៀន</div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  
+  <script>
+  const cards = document.querySelectorAll('.card');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  cards.forEach(card => observer.observe(card));
+</script>
+
+</body>
+</html>
